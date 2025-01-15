@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management Dashboard</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 30px;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .form-group input, .form-group textarea, .form-group button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        .form-group button {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #2980b9;
+        }
+
+        /* List Container Styles */
+        .list-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .item {
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item strong {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .delete-button {
+            background-color: #e74c3c;
+            color: #ffffff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Button Styles */
+        button {
+            display: inline-block;
+            font-size: 1em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .form-group input, .form-group textarea, .form-group button {
+                font-size: 0.9em;
+            }
+
+            .item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .delete-button {
+                margin-top: 10px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+<h1>Waste Management Dashboard</h1>
+
+<!-- Waste Categories Section -->
+<h2>Waste Categories</h2>
+<button onclick="fetchCategories()">Refresh Categories</button>
+<div id="categories-container" class="list-container"></div>
+
+<h3>Add New Category</h3>
+<div id="add-category-form" class="form-group">
+    <label for="categoryName">Category Name:</label>
+    <input type="text" id="categoryName" placeholder="Enter category name">
+    <button onclick="addCategory()">Add Category</button>
+</div>
+
+<h3>Set Description</h3>
+<div id="description" class="form-group">
+    <label for="categoryId">Category ID:</label>
+    <input type="number" id="categoryIdDesc" placeholder="Enter Category ID">
+
+    <label for="description">Description:</label>
+    <input type="text" id="descriptionName" placeholder="Enter Description">
+
+    <button onclick="updateCategoryDescription()">Set Description</button>
+</div>
+
+
+<!-- Recycling Tips Section -->
+<h2>Recycling Tips</h2>
+<button onclick="fetchAllTips()">Refresh Tips</button>
+<div id="tips-container" class="list-container"></div>
+
+<h3>Add New Tip</h3>
+<div id="add-tip-form" class="form-group">
+    <label for="tip">Recycling Tip:</label>
+    <textarea id="tip" placeholder="Enter a recycling tip"></textarea>
+
+    <label for="categoryId">Category ID:</label>
+    <input type="number" id="categoryId" placeholder="Enter category ID">
+
+    <button onclick="addTip()">Add Tip</button>
+</div>
+
+<script src="scrip.js"></script>
+</body>
+</html>
