@@ -1,4 +1,4 @@
-const apiBaseUrl = 'https://enviro365.onrender.com/api'; // API base URL
+const apiBaseUrl = 'https://environment365-qhpp.onrender.com/api'; // API base URL
 
 // Fetch all waste categories
 async function fetchCategories() {
